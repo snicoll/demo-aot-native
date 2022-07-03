@@ -79,6 +79,7 @@ public class DemoController {
 							SimpleHelloService.class.getConstructors()[0], ExecutableMode.INVOKE)
 					.registerMethod(ReflectionUtils.findMethod(
 							SimpleHelloService.class, "sayHello", String.class), ExecutableMode.INVOKE);
+			hints.resources().registerPattern("hello.txt");
 		}
 
 	}
