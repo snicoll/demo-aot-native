@@ -1,0 +1,60 @@
+= AOT and Native with Spring Boot 3
+
+This repository provides a basic web application using Spring Boot 3 that can be built as a native image using GraalVM.
+It showcases how reflection and resources loading can be configured using `RuntimeHints`.
+
+This sample can be seen in action in https://www.youtube.com/watch?v=oTn8SHz5Ux8[Ahead Of Time and Native in Spring Boot 3.0].
+
+== Building
+
+To build this demo application, you need GraalVM 23.0 on your path.
+If you use `SDKMan`, invoke the following:
+
+[indent=0]
+----
+sdk install java 23.0.3.r17-nik
+----
+
+See also https://www.graalvm.org/java/quickstart/[GraalVM Quickstart]
+
+=== Maven
+
+To build the application with Maven, you need to enable the `native` profile:
+
+[indent=0]
+----
+	$ ./mvnw -Pnative native:compile
+----
+
+=== Gradle
+
+To build the application with Gradle, you need to make sure that the `org.graalvm.buildtools.native` plugin is enabled.
+
+[indent=0]
+----
+	$ ./gradlew nativeCompile
+----
+
+== Testing
+
+You can run your unit tests in a native image to verify that your application and its dependency work as expected.
+
+=== Maven
+
+To run your tests in a native image with Maven, you need to enable the `nativeTest` profile:
+
+[indent=0]
+----
+	$ ./mvnw -PnativeTest test
+----
+
+=== Gradle
+
+To run your tests in a native image with Gradle, you need to make sure that the `org.graalvm.buildtools.native` plugin is enabled.
+
+[indent=0]
+----
+	$ ./gradlew nativeTest
+----
+
+
